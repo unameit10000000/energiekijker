@@ -49,50 +49,59 @@ export function ComparisonResults({ data }: { data: any }) {
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h2 className="text-2xl font-bold text-green-800 mb-4">Vergelijkingsresultaten</h2>
 
-        <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
-          <div className="flex gap-2">
-            <Button
-              variant={sortBy === "price" ? "default" : "outline"}
-              onClick={() => setSortBy("price")}
-              className={sortBy === "price" ? "bg-green-700 hover:bg-green-800" : ""}
-            >
-              Prijs
-              {sortBy === "price" &&
-                (sortDirection === "asc" ? (
-                  <ArrowDownAZ className="ml-2 h-4 w-4" />
+        <div className="flex flex-col gap-4 mb-6">
+          <div className="overflow-x-auto -mx-6 px-6 pb-2">
+            <div className="flex gap-2 min-w-max">
+              <Button
+                variant={sortBy === "price" ? "default" : "outline"}
+                onClick={() => setSortBy("price")}
+                className={`${sortBy === "price" ? "bg-green-700 hover:bg-green-800" : ""} text-xs sm:text-sm`}
+                size="sm"
+              >
+                Prijs
+                {sortBy === "price" &&
+                  (sortDirection === "asc" ? (
+                    <ArrowDownAZ className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                  ) : (
+                    <ArrowUpAZ className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                  ))}
+              </Button>
+              <Button
+                variant={sortBy === "rating" ? "default" : "outline"}
+                onClick={() => setSortBy("rating")}
+                className={`${sortBy === "rating" ? "bg-green-700 hover:bg-green-800" : ""} text-xs sm:text-sm`}
+                size="sm"
+              >
+                Score
+                {sortBy === "rating" &&
+                  (sortDirection === "asc" ? (
+                    <ArrowDownAZ className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                  ) : (
+                    <ArrowUpAZ className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                  ))}
+              </Button>
+              <Button
+                variant={sortBy === "cashback" ? "default" : "outline"}
+                onClick={() => setSortBy("cashback")}
+                className={`${sortBy === "cashback" ? "bg-green-700 hover:bg-green-800" : ""} text-xs sm:text-sm`}
+                size="sm"
+              >
+                Cashback
+                {sortBy === "cashback" &&
+                  (sortDirection === "asc" ? (
+                    <ArrowDownAZ className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                  ) : (
+                    <ArrowUpAZ className="ml-1 h-3 w-3 sm:h-4 sm:w-4" />
+                  ))}
+              </Button>
+              <Button variant="outline" onClick={toggleSortDirection} size="sm">
+                {sortDirection === "asc" ? (
+                  <ArrowDownAZ className="h-3 w-3 sm:h-4 sm:w-4" />
                 ) : (
-                  <ArrowUpAZ className="ml-2 h-4 w-4" />
-                ))}
-            </Button>
-            <Button
-              variant={sortBy === "rating" ? "default" : "outline"}
-              onClick={() => setSortBy("rating")}
-              className={sortBy === "rating" ? "bg-green-700 hover:bg-green-800" : ""}
-            >
-              Beoordeling
-              {sortBy === "rating" &&
-                (sortDirection === "asc" ? (
-                  <ArrowDownAZ className="ml-2 h-4 w-4" />
-                ) : (
-                  <ArrowUpAZ className="ml-2 h-4 w-4" />
-                ))}
-            </Button>
-            <Button
-              variant={sortBy === "cashback" ? "default" : "outline"}
-              onClick={() => setSortBy("cashback")}
-              className={sortBy === "cashback" ? "bg-green-700 hover:bg-green-800" : ""}
-            >
-              Cashback
-              {sortBy === "cashback" &&
-                (sortDirection === "asc" ? (
-                  <ArrowDownAZ className="ml-2 h-4 w-4" />
-                ) : (
-                  <ArrowUpAZ className="ml-2 h-4 w-4" />
-                ))}
-            </Button>
-            <Button variant="outline" onClick={toggleSortDirection} className="ml-2">
-              {sortDirection === "asc" ? <ArrowDownAZ className="h-4 w-4" /> : <ArrowUpAZ className="h-4 w-4" />}
-            </Button>
+                  <ArrowUpAZ className="h-3 w-3 sm:h-4 sm:w-4" />
+                )}
+              </Button>
+            </div>
           </div>
 
           <Filters
